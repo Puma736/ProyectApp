@@ -1,4 +1,15 @@
+'use client';
+
+import { useState } from 'react';
+
 export default function Home() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    setLoggedIn(true);
+  };
+
   return (
     <main style={{
       display: 'flex',
@@ -25,7 +36,7 @@ export default function Home() {
           color: '#111827',
           marginBottom: '14px'
         }}>
-          Regístrate ahora
+          Iniciar sesión
         </h1>
         <p style={{
           margin: 0,
@@ -33,15 +44,16 @@ export default function Home() {
           lineHeight: '1.7',
           marginBottom: '24px'
         }}>
-          Completa este formulario para recibir novedades y la descarga segura.
+          Ingresa tu correo y contraseña. Luego podrás descargar el archivo seguro.
         </p>
 
-        <form style={{ display: 'grid', gap: '16px' }}>
+        <form onSubmit={handleLogin} style={{ display: 'grid', gap: '16px' }}>
           <label style={{ display: 'flex', flexDirection: 'column', gap: '8px', color: '#374151', fontSize: '0.95rem' }}>
-            Nombre completo
+            Correo electrónico
             <input
-              type="text"
-              placeholder="Tu nombre"
+              type="email"
+              placeholder="ejemplo@correo.com"
+              required
               style={{
                 width: '100%',
                 padding: '14px 16px',
@@ -54,10 +66,11 @@ export default function Home() {
           </label>
 
           <label style={{ display: 'flex', flexDirection: 'column', gap: '8px', color: '#374151', fontSize: '0.95rem' }}>
-            Correo electrónico
+            Contraseña
             <input
-              type="email"
-              placeholder="ejemplo@correo.com"
+              type="password"
+              placeholder="********"
+              required
               style={{
                 width: '100%',
                 padding: '14px 16px',
@@ -83,7 +96,7 @@ export default function Home() {
               cursor: 'pointer'
             }}
           >
-            Enviar datos
+            Iniciar sesión
           </button>
         </form>
       </div>
@@ -93,26 +106,29 @@ export default function Home() {
           Mi Aplicación
         </h2>
         <p style={{ margin: 0, lineHeight: '1.8' }}>
-          Haz clic abajo cuando quieras descargar el archivo seguro.
+          {loggedIn ? '¡Listo! Ya puedes descargar el archivo seguro.' : 'Inicia sesión arriba para mostrar el botón de descarga.'}
         </p>
-        <a
-          href="https://google.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'inline-block',
-            marginTop: '24px',
-            padding: '16px 32px',
-            backgroundColor: '#111827',
-            color: '#ffffff',
-            borderRadius: '50px',
-            textDecoration: 'none',
-            fontWeight: 'bold',
-            fontSize: '1.05rem'
-          }}
-        >
-          Descargar Ahora (100MB)
-        </a>
+
+        {loggedIn && (
+          <a
+            href="https://google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-block',
+              marginTop: '24px',
+              padding: '16px 32px',
+              backgroundColor: '#111827',
+              color: '#ffffff',
+              borderRadius: '50px',
+              textDecoration: 'none',
+              fontWeight: 'bold',
+              fontSize: '1.05rem'
+            }}
+          >
+            Descargar Ahora (100MB)
+          </a>
+        )}
       </div>
     </main>
   );
