@@ -5,7 +5,7 @@ import { useState } from 'react';
 export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const handleLogin = (event) => {
+  const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoggedIn(true);
   };
