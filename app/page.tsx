@@ -12,7 +12,7 @@ export default function Home() {
       <h1 style={{ color: '#000000', marginBottom: '10px' }}>Mi Aplicación</h1>
       <p style={{ color: '#666', marginBottom: '30px' }}>Haz clic abajo para iniciar la descarga segura.</p>
       
-      {/* REEMPLAZA LAS COMILLAS DE ABAJO CON TU LINK DE DRIVE */}
+    
       <a 
         href="https://google.com" 
         target="_blank" 
